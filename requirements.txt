@@ -1,0 +1,27 @@
+# requirements.txt
+# ----------------
+# This file lists all the third-party Python libraries this project needs.
+# Run `pip install -r requirements.txt` and pip will download and install
+# every library listed here from PyPI (the Python Package Index).
+#
+# WHAT IS pip?
+# ------------
+# pip is Python's package manager — like npm for Node.js or Homebrew for macOS.
+# It lets you install libraries other people have written so you don't have
+# to build everything from scratch.
+#
+# WHAT IS PyPI?
+# -------------
+# PyPI (pypi.org) is the central repository of Python packages. When you run
+# `pip install flask`, pip downloads the Flask package from PyPI.
+
+# Flask — the web framework that turns this Python code into a web server.
+flask
+
+# supabase — the official Python client for Supabase. Lets us call
+# supabase.rpc(), supabase.table(), etc. from Python.
+supabase
+
+# python-dotenv — loads KEY=VALUE pairs from a .env file into environment
+# variables so we can keep secrets out of source code.
+python-dotenv
