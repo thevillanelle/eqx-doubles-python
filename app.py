@@ -229,6 +229,12 @@ def index():
     return render_template("index.html", clubs=CLUBS, categories=CATEGORIES)
 
 
+
+@app.route("/clubs")
+def clubs():
+    """Serve the club directory page."""
+    return render_template("clubs.html")
+
 @app.route("/api/doubles", methods=["POST"])
 def api_doubles():
     """
