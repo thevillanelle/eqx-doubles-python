@@ -1,20 +1,17 @@
 <!DOCTYPE html>
+{%- raw %}
 <!--
   index.html  —  EQX Doubles Finder (Jinja2 Template)
-  =====================================================
 
-  This is a Jinja2 template. Jinja2 is a templating engine for Python.
-  It looks mostly like HTML, but it has special tags that Flask fills in
-  before sending the page to the browser:
+  This is a Jinja2 template. Jinja2 has special tags:
+    {{ variable }}         - outputs a variable value
+    {% for x in list %}    - a loop
+    {% if condition %}     - a conditional
+    {% endfor / endif %}   - closes a loop or conditional
 
-    {{ variable }}         — outputs a variable's value
-    {% for x in list %}    — a loop (like a for loop in Python)
-    {% if condition %}     — a conditional block
-    {% endfor / endif %}   — closes a loop or conditional
-
-  Flask renders this file server-side (on your computer) and sends
-  finished HTML to the browser. The browser never sees Jinja2 syntax.
+  Flask renders this file server-side and sends finished HTML to the browser.
 -->
+{%- endraw %}
 <html lang="en">
 <head>
 <meta charset="UTF-8">
