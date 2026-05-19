@@ -1,54 +1,13 @@
 <!DOCTYPE html>
-{%- raw %}
-<!--
-  index.html  —  EQX Doubles Finder (Jinja2 Template)
-
-  This is a Jinja2 template. Jinja2 has special tags:
-    {{ variable }}         - outputs a variable value
-    {% for x in list %}    - a loop
-    {% if condition %}     - a conditional
-    {% endfor / endif %}   - closes a loop or conditional
-
-  Flask renders this file server-side and sends finished HTML to the browser.
--->
-{%- endraw %}
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EQX Doubles — NYC</title>
 <style>
-{%- raw %}
-:root {
-  --lime:    #c8f23a;
-  --lime-bg: rgba(200,242,58,.07);
-  --bg:      #000;
-  --s1:      #0e0e0e;
-  --s2:      #161616;
-  --s3:      #1e1e1e;
-  --border:  #282828;
-  --border2: #323232;
-  --text:    #f5f5f5;
-  --muted:   #7a7a7a;
-  --dim:     #999;
-  --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-[data-theme="light"] {
-  --lime:    #5d8a00;
-  --lime-bg: rgba(93,138,0,.08);
-  --bg:      #f8f8f8;
-  --s1:      #fff;
-  --s2:      #f2f2f2;
-  --s3:      #e8e8e8;
-  --border:  #ddd;
-  --border2: #ccc;
-  --text:    #111;
-  --muted:   #777;
-  --dim:     #aaa;
-}
-[data-theme="light"] .find-btn{ color:#fff }
-[data-theme="light"] .tog.active{ color:#fff }
-[data-theme="light"] .nbhd-all-btn.active{ color:#fff }
+:root{--lime:#c8f23a;--lime-bg:rgba(200,242,58,.07);--bg:#000;--s1:#0e0e0e;--s2:#161616;--s3:#1e1e1e;--border:#282828;--border2:#323232;--text:#f5f5f5;--muted:#7a7a7a;--dim:#999;--font:'Helvetica Neue',Helvetica,Arial,sans-serif}
+[data-theme="light"]{--lime:#5d8a00;--lime-bg:rgba(93,138,0,.08);--bg:#f8f8f8;--s1:#fff;--s2:#f2f2f2;--s3:#e8e8e8;--border:#ddd;--border2:#ccc;--text:#111;--muted:#777;--dim:#aaa}
+[data-theme="light"] .find-btn,[data-theme="light"] .tog.active,[data-theme="light"] .nbhd-all-btn.active{color:#fff}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{height:100%}
 body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5;height:100%;overflow:hidden}
@@ -65,13 +24,10 @@ aside::-webkit-scrollbar{width:3px}
 aside::-webkit-scrollbar-thumb{background:var(--border)}
 .section-head{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
 .section-head span{color:var(--lime)}
-.nbhd-block{margin-bottom:14px}
 .nbhd-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
 .nbhd-label{font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
-.loc-list{display:flex;flex-direction:column;gap:1px}
 .nbhd-all-btn{background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:8px;font-weight:700;letter-spacing:.1em;padding:2px 7px;text-transform:uppercase;transition:.1s}
-.nbhd-all-btn:hover{border-color:var(--lime);color:var(--lime)}
-.nbhd-all-btn.active{background:var(--lime-bg);border-color:var(--lime);color:var(--lime)}
+.nbhd-all-btn:hover,.nbhd-all-btn.active{background:var(--lime-bg);border-color:var(--lime);color:var(--lime)}
 .loc-row{display:flex;align-items:center;gap:9px;padding:5px 7px;cursor:pointer;transition:.1s;border:1px solid transparent}
 .loc-row:hover{background:var(--s2)}
 .loc-row input[type=checkbox]{appearance:none;-webkit-appearance:none;width:13px;height:13px;border:1px solid var(--border2);background:transparent;cursor:pointer;flex-shrink:0;position:relative;transition:.1s}
@@ -83,7 +39,7 @@ aside::-webkit-scrollbar-thumb{background:var(--border)}
 .slot-row{display:flex;flex-direction:column;gap:5px}
 .slot-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:7px}
 .slot-num{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--s3);border:1px solid var(--border2);font-size:9px;font-weight:700;color:var(--text);flex-shrink:0}
-.eqx-select{appearance:none;-webkit-appearance:none;background:var(--s2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6' fill='none' stroke='%235a5a5a' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 11px center;border:1px solid var(--border);color:var(--text);font-size:12px;padding:9px 32px 9px 11px;width:100%;cursor:pointer;transition:.1s}
+.eqx-select{appearance:none;-webkit-appearance:none;background:var(--s2);border:1px solid var(--border);color:var(--text);font-size:12px;padding:9px 32px 9px 11px;width:100%;cursor:pointer;transition:.1s}
 .eqx-select:focus{outline:none;border-color:var(--lime)}
 .eqx-select option,.eqx-select optgroup{background:#1a1a1a}
 .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -94,8 +50,7 @@ aside::-webkit-scrollbar-thumb{background:var(--border)}
 .eqx-input:focus{outline:none;border-color:var(--lime)}
 .tod-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
 .tod-btn{background:var(--s2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 6px;text-align:center;transition:.12s}
-.tod-btn:hover{border-color:var(--lime);color:var(--lime)}
-.tod-btn.active{background:var(--lime-bg);border-color:var(--lime);color:var(--lime)}
+.tod-btn:hover,.tod-btn.active{background:var(--lime-bg);border-color:var(--lime);color:var(--lime)}
 .tod-icon{font-size:15px;line-height:1}
 .tod-label{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .tod-range{font-size:7px;letter-spacing:.04em;color:var(--dim);margin-top:1px}
@@ -124,7 +79,8 @@ main::-webkit-scrollbar-thumb{background:var(--border)}
 .pairs{display:flex;flex-direction:column;gap:10px}
 .pair-card{border:1px solid var(--border);background:var(--s1);overflow:hidden;transition:border-color .15s}
 .pair-card:hover{border-color:var(--border2)}
-.pair-meta{display:flex;align-items:center;justify-content:space-between;padding:9px 15px;border-bottom:1px solid var(--border);background:var(--s2)}
+.pair-meta{display:flex;flex-direction:column;padding:9px 15px;border-bottom:1px solid var(--border);background:var(--s2);gap:5px}
+.pair-meta-top{display:flex;align-items:center;justify-content:space-between}
 .pair-loc{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .pair-gap{font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--lime);text-transform:uppercase}
 .pair-body{display:grid;grid-template-columns:1fr 1px 1fr}
@@ -137,11 +93,8 @@ main::-webkit-scrollbar-thumb{background:var(--border)}
 .cc-club{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:5px}
 .tier-divider{font-size:8px;letter-spacing:.15em;color:var(--dim);text-transform:uppercase;padding:12px 0 6px;text-align:center}
 .line-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-size:9px;font-weight:900;font-family:Arial,sans-serif;flex-shrink:0}
-.pair-meta-top{display:flex;align-items:center;justify-content:space-between}
 @media(max-width:860px){
   body{overflow:auto}
-  #app{display:grid;grid-template-rows:56px 1fr;height:100vh}
-  header{padding:0 16px}
   .workspace{display:block;height:calc(100vh - 56px);overflow:hidden;position:relative}
   main{position:absolute;inset:0;overflow-y:auto;padding:20px 16px 100px}
   aside{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--s1);border-top:1px solid var(--border);max-height:85vh;overflow-y:auto;padding:20px 16px 32px;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);border-radius:16px 16px 0 0;display:flex;flex-direction:column;gap:22px}
@@ -152,82 +105,41 @@ main::-webkit-scrollbar-thumb{background:var(--border)}
   .pair-body{grid-template-columns:1fr}
   .pair-div{display:none}
 }
-@media(min-width:861px){#filterFab{display:none}#drawerScrim{display:none!important}}
-{%- endraw %}
+@media(min-width:861px){ #filterFab{display:none} #drawerScrim{display:none!important}}
 </style>
 </head>
 <body>
 <div id="app">
-
 <header>
   <div class="logo">EQUINOX <em>·</em> Doubles Finder</div>
   <div class="header-right">
-    <!--
-      This badge text is hardcoded in the Jinja2 template.
-      Notice it says "Python + Flask" instead of the original "Live DB".
-    -->
     <span class="db-badge">🐍 Python + Flask</span>
-    <button onclick="toggleTheme()" title="Toggle light/dark" style="background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:13px;padding:3px 8px;line-height:1;transition:.15s">🌙</button>
+    <button onclick="toggleTheme()" style="background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:13px;padding:3px 8px;line-height:1;transition:.15s">🌙</button>
   </div>
 </header>
-
 <div class="workspace">
 <aside id="sidebar">
-
-  <!-- LOCATIONS
-       Flask passed a `clubs` list to this template.
-       We use Jinja2 {% for %} to loop over it and build checkboxes.
-       `clubs_by_neighborhood` is built in JS below from the CLUBS_DATA array.
-  -->
   <div>
     <div class="section-head">Locations <span id="locCount">0 selected</span></div>
-    <div id="locList">
-      <!-- Neighborhoods are rendered client-side from CLUBS_DATA for simplicity -->
-    </div>
+    <div id="locList"></div>
   </div>
-
-  <!-- CLASS PAIR -->
   <div>
     <div class="section-head">Class Pair</div>
     <div class="slot-block">
       <div class="slot-row">
         <div class="slot-label"><span class="slot-num">1</span> First Class</div>
-        <!--
-          This <select> is built dynamically from the CATEGORIES constant in app.py.
-          Flask passed `categories` to this template. We loop over it with Jinja2.
-        -->
-        <select class="eqx-select" id="slot1">
-          {% for group_name, opts in categories %}
-          <optgroup label="{{ group_name }}">
-            {% for cat in opts %}
-            <option value="{{ cat.v }}"{% if cat.v == 'barre-all' %} selected{% endif %}>{{ cat.l }}</option>
-            {% endfor %}
-          </optgroup>
-          {% endfor %}
-        </select>
+        <select class="eqx-select" id="slot1"></select>
       </div>
       <div class="slot-row">
         <div class="slot-label"><span class="slot-num">2</span> Second Class</div>
-        <select class="eqx-select" id="slot2">
-          {% for group_name, opts in categories %}
-          <optgroup label="{{ group_name }}">
-            {% for cat in opts %}
-            <option value="{{ cat.v }}"{% if cat.v == 'sculpt-all' %} selected{% endif %}>{{ cat.l }}</option>
-            {% endfor %}
-          </optgroup>
-          {% endfor %}
-        </select>
+        <select class="eqx-select" id="slot2"></select>
       </div>
     </div>
   </div>
-
-  <!-- DATE & WINDOW -->
   <div>
     <div class="section-head">Date &amp; Window</div>
     <div class="field-grid">
-      <div class="field full">
-        <input type="date" class="eqx-input" id="dateInput">
-      </div>
+      <div class="field full"><input type="date" class="eqx-input" id="dateInput"></div>
     </div>
     <div style="margin-top:10px">
       <div class="field-label" style="margin-bottom:7px">Time of Day</div>
@@ -240,8 +152,6 @@ main::-webkit-scrollbar-thumb{background:var(--border)}
       </div>
     </div>
   </div>
-
-  <!-- GAP -->
   <div>
     <div class="section-head">Gap Between Classes</div>
     <div class="toggle-group" id="gapGroup">
@@ -251,8 +161,6 @@ main::-webkit-scrollbar-thumb{background:var(--border)}
       <button class="tog" data-v="60">≤60m</button>
     </div>
   </div>
-
-  <!-- ORDER -->
   <div>
     <div class="section-head">Pair Order</div>
     <div class="toggle-group col" id="orderGroup">
@@ -261,23 +169,18 @@ main::-webkit-scrollbar-thumb{background:var(--border)}
       <button class="tog" data-v="2first">② First → ①</button>
     </div>
   </div>
-
-  <!-- TRANSIT -->
   <div>
     <div class="section-head">How to Get There</div>
     <div class="toggle-group col" id="transitGroup">
       <button class="tog" data-v="same">🏋 Same Gym</button>
       <button class="tog" data-v="walk">🚶 Walking Distance</button>
-      <button class="tog" data-v="quick-train">🚇 Quick Train (1–3 stops)</button>
+      <button class="tog" data-v="quick-train">🚇 Quick Train</button>
       <button class="tog" data-v="extended">🚇 Extended Commute</button>
     </div>
-    <div style="font-size:8px;color:var(--muted);margin-top:4px;letter-spacing:.08em">No selection = show all</div>
+    <div style="font-size:8px;color:var(--muted);margin-top:4px">No selection = show all</div>
   </div>
-
   <button class="find-btn" id="findBtn" onclick="run()">Find Doubles →</button>
-
 </aside>
-
 <main id="resultsPanel">
   <div class="centered">
     <div class="centered-icon">◎</div>
@@ -285,293 +188,137 @@ main::-webkit-scrollbar-thumb{background:var(--border)}
     <div class="centered-sub">Pick your clubs and class types, then tap Find Doubles.</div>
   </div>
 </main>
-
 <div id="drawerScrim" onclick="closeDrawer()"></div>
 <button id="filterFab" onclick="openDrawer()">⚙ Filters &amp; Search</button>
-
 </div>
 </div>
 
 <script>
 'use strict';
-
-/*
- * ════════════════════════════════════════════════════════
- *  CLUBS_DATA
- *  This data comes from app.py via Jinja2.
- *
- *  In Jinja2, {{ clubs | tojson }} converts the Python `clubs`
- *  list (a Python list of dictionaries) into a JSON string that
- *  JavaScript can read as an array of objects.
- *
- *  This is the "handoff" from server-side Python to client-side JS.
- * ════════════════════════════════════════════════════════
- */
+// Flask passes clubs and categories as JSON — injected directly into JS variables.
+// This is the ONLY place Jinja2 syntax appears in this template.
 const CLUBS_DATA = {{ clubs | tojson }};
+const CATEGORIES_DATA = {{ categories | tojson }};
 
-/*
- * CLUB_LINES: subway lines for each club (used for transit logic).
- * Same data as the original web app, hardcoded here.
- */
-const CLUB_LINES = {
-  110:['2','3','4','5','J','Z'],128:['A','C','E','2','3','4','5'],111:['1','2','3','A','C','E'],
-  122:['B','D','F','M','J','Z'],114:['N','R','Q','W','B','D','F','M'],135:['B','D','F','M','6'],
-  124:['1'],162:['1','C','E'],112:['A','C','E','L','1','2','3'],116:['C','E','1'],
-  102:['N','R','Q','W','F','M','6'],136:['6','N','R'],160:['N','R','Q','W','6'],138:['7','A','C','E'],
-  127:['B','D','F','M','7'],108:['4','5','6','7','S'],109:['4','5','6','7','S'],126:['B','D','F','M','N','R'],
-  133:['6','E','M'],106:['6','E','M'],115:['6'],139:['6','N','R'],
-  107:['1','N','R','Q','W','C','E'],113:['A','B','C','D','1'],
-  132:['N','R','Q','W','4','5','6'],105:['F','Q','4','5','6'],117:['6','Q'],
-  104:['1','B','C'],129:['4','5','6'],131:['N','R','Q','W','4','5','6'],
-  121:['1','2','3'],103:['1','2','3','B','C'],
-  130:['2','3','4','5','R'],134:['A','C','F'],161:['J','M','Z','L'],137:['J','M','Z','L'],
-};
+const CLUB_LINES={110:['2','3','4','5','J','Z'],128:['A','C','E','2','3','4','5'],111:['1','2','3','A','C','E'],122:['B','D','F','M','J','Z'],114:['N','R','Q','W','B','D','F','M'],135:['B','D','F','M','6'],124:['1'],162:['1','C','E'],112:['A','C','E','L','1','2','3'],116:['C','E','1'],102:['N','R','Q','W','F','M','6'],136:['6','N','R'],160:['N','R','Q','W','6'],138:['7','A','C','E'],127:['B','D','F','M','7'],108:['4','5','6','7','S'],109:['4','5','6','7','S'],126:['B','D','F','M','N','R'],133:['6','E','M'],106:['6','E','M'],115:['6'],139:['6','N','R'],107:['1','N','R','Q','W','C','E'],113:['A','B','C','D','1'],132:['N','R','Q','W','4','5','6'],105:['F','Q','4','5','6'],117:['6','Q'],104:['1','B','C'],129:['4','5','6'],131:['N','R','Q','W','4','5','6'],121:['1','2','3'],103:['1','2','3','B','C'],130:['2','3','4','5','R'],134:['A','C','F'],161:['J','M','Z','L'],137:['J','M','Z','L']};
+const TOD_PRESETS=[{id:'any',label:'Any Time',icon:'◈',start:300,end:1380,any:true},{id:'early-am',label:'Early Morning',icon:'🌅',start:300,end:540},{id:'late-am',label:'Late Morning',icon:'☀️',start:540,end:720},{id:'early-pm',label:'Early Afternoon',icon:'🌤',start:720,end:900},{id:'late-pm',label:'Late Afternoon',icon:'⛅',start:900,end:1080},{id:'evening',label:'Evening',icon:'🌆',start:1080,end:1260},{id:'night',label:'Night',icon:'🌙',start:1260,end:1380},{id:'custom',label:'Set Time',icon:'⏱',start:null,end:null,custom:true}];
+let activeTod='any',selectedClubs=new Set(),maxGap=30,order='either',allowedTransit=new Set();
 
-const TOD_PRESETS = [
-  { id:'any',      label:'Any Time',        icon:'◈', start:300,  end:1380, any:true  },
-  { id:'early-am', label:'Early Morning',   icon:'🌅', start:300,  end:540              },
-  { id:'late-am',  label:'Late Morning',    icon:'☀️', start:540,  end:720              },
-  { id:'early-pm', label:'Early Afternoon', icon:'🌤', start:720,  end:900              },
-  { id:'late-pm',  label:'Late Afternoon',  icon:'⛅', start:900,  end:1080             },
-  { id:'evening',  label:'Evening',         icon:'🌆', start:1080, end:1260             },
-  { id:'night',    label:'Night',           icon:'🌙', start:1260, end:1380             },
-  { id:'custom',   label:'Set Time',        icon:'⏱', start:null, end:null, custom:true},
-];
+function fmt(m){const h=Math.floor(m/60),mm=m%60,ap=h>=12?'PM':'AM';return `${h%12||12}:${String(mm).padStart(2,'0')} ${ap}`}
+function toMins(s){const[h,m]=s.split(':').map(Number);return h*60+m}
+function todayStr(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function dayOfWeek(ds){return['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'][new Date(ds+'T12:00:00').getDay()]}
+function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='light'?'':'light';document.documentElement.setAttribute('data-theme',t)}
+function openDrawer(){document.getElementById('sidebar').classList.add('open');document.getElementById('drawerScrim').classList.add('visible')}
+function closeDrawer(){document.getElementById('sidebar').classList.remove('open');document.getElementById('drawerScrim').classList.remove('visible')}
 
-let activeTod = 'any';
-let selectedClubs = new Set();
-let maxGap = 30;
-let order = 'either';
-let allowedTransit = new Set();
+// Transit helpers
+function walkMins(aId,bId){if(aId===bId)return 0;const a=CLUBS_DATA.find(c=>c.id===aId),b=CLUBS_DATA.find(c=>c.id===bId);if(!a||!b)return 999;const R=6371000,dLat=(b.lat-a.lat)*Math.PI/180,dLng=(b.lng-a.lng)*Math.PI/180;const s=Math.sin(dLat/2)**2+Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLng/2)**2;return Math.round(R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s))*1.3/80)}
+function haversineDist(a,b){const R=6371,dLat=(b.lat-a.lat)*Math.PI/180,dLng=(b.lng-a.lng)*Math.PI/180;const s=Math.sin(dLat/2)**2+Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLng/2)**2;return R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s))}
+function transitInfo(aId,bId){if(aId===bId)return{type:'same',icon:'🏋',label:'Same gym',minGap:0};const a=CLUBS_DATA.find(c=>c.id===aId),b=CLUBS_DATA.find(c=>c.id===bId);if(!a||!b)return{type:'walk',icon:'🚶',label:'Walk',minGap:15};const walk=walkMins(aId,bId);if(walk<=15)return{type:'walk',icon:'🚶',label:`${walk} min walk`,minGap:walk};const dist=haversineDist(a,b);const aL=CLUB_LINES[aId]||[],bL=CLUB_LINES[bId]||[];const shared=aL.filter(l=>bL.includes(l));if(shared.length){const stops=Math.max(1,Math.round(dist/0.5));const mins=Math.ceil((stops*2.5+10)/5)*5;const line=shared[0];if(dist<4)return{type:'quick-train',icon:'🚇',label:`${line} · ~${mins} min`,minGap:Math.max(20,mins)};else return{type:'extended',icon:'🚇',label:`${line} · ~${mins} min`,minGap:Math.max(35,mins)}}const mins2=Math.ceil((dist*5+15)/5)*5;return{type:'extended',icon:'🚇',label:`~${mins2} min`,minGap:Math.max(35,mins2)}}
+const TRANSIT_CACHE={};
+function buildTransitCache(){CLUBS_DATA.forEach(a=>CLUBS_DATA.forEach(b=>{if(a.id<b.id){const t=transitInfo(a.id,b.id);TRANSIT_CACHE[`${a.id}-${b.id}`]=t;TRANSIT_CACHE[`${b.id}-${a.id}`]=t}}))}
+function getTransit(aId,bId){if(aId===bId)return{type:'same',icon:'🏋',label:'Same gym',minGap:0};return TRANSIT_CACHE[`${aId}-${bId}`]??transitInfo(aId,bId)}
 
-/* ─── HELPERS ──────────────────────────────────────────── */
-function fmt(m) {
-  const h = Math.floor(m/60), mm = m%60, ap = h >= 12 ? 'PM' : 'AM';
-  return `${h%12||12}:${String(mm).padStart(2,'0')} ${ap}`;
-}
-function toMins(s) { const [h,m] = s.split(':').map(Number); return h*60+m; }
-function todayStr() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-function dayOfWeek(dateStr) {
-  const DAYS = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
-  return DAYS[new Date(dateStr + 'T12:00:00').getDay()];
-}
-function toggleTheme() {
-  const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', t === 'dark' ? '' : t);
-}
-function openDrawer()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('drawerScrim').classList.add('visible'); }
-function closeDrawer() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('drawerScrim').classList.remove('visible'); }
-
-/* ─── TRANSIT ──────────────────────────────────────────── */
-function walkMins(aId, bId) {
-  if (aId === bId) return 0;
-  const a = CLUBS_DATA.find(c => c.id === aId), b = CLUBS_DATA.find(c => c.id === bId);
-  if (!a || !b) return 999;
-  const R = 6371000, dLat = (b.lat - a.lat)*Math.PI/180, dLng = (b.lng - a.lng)*Math.PI/180;
-  const s = Math.sin(dLat/2)**2 + Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLng/2)**2;
-  return Math.round(R * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1-s)) * 1.3 / 80);
-}
-function haversineDist(a, b) {
-  const R = 6371, dLat = (b.lat-a.lat)*Math.PI/180, dLng = (b.lng-a.lng)*Math.PI/180;
-  const s = Math.sin(dLat/2)**2 + Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLng/2)**2;
-  return R * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1-s));
-}
-function transitInfo(aId, bId) {
-  if (aId === bId) return { type:'same', icon:'🏋', label:'Same gym', minGap:0 };
-  const a = CLUBS_DATA.find(c => c.id === aId), b = CLUBS_DATA.find(c => c.id === bId);
-  if (!a || !b) return { type:'walk', icon:'🚶', label:'Walk', minGap:15 };
-  const walk = walkMins(aId, bId);
-  if (walk <= 15) return { type:'walk', icon:'🚶', label:`${walk} min walk`, minGap:walk };
-  const dist = haversineDist(a, b);
-  const aL = CLUB_LINES[aId]||[], bL = CLUB_LINES[bId]||[];
-  const shared = aL.filter(l => bL.includes(l));
-  if (shared.length) {
-    const stops = Math.max(1, Math.round(dist / 0.5));
-    const mins  = Math.ceil((stops * 2.5 + 10) / 5) * 5;
-    const line  = shared[0];
-    if (dist < 4) return { type:'quick-train', icon:'🚇', label:`${line} · ~${mins} min`, minGap:Math.max(20,mins) };
-    else          return { type:'extended',    icon:'🚇', label:`${line} · ~${mins} min`, minGap:Math.max(35,mins) };
-  }
-  const mins2 = Math.ceil((dist * 5 + 15) / 5) * 5;
-  return { type:'extended', icon:'🚇', label:`~${mins2} min`, minGap:Math.max(35,mins2) };
-}
-const TRANSIT_CACHE = {};
-function buildTransitCache() {
-  CLUBS_DATA.forEach(a => CLUBS_DATA.forEach(b => {
-    if (a.id < b.id) {
-      const t = transitInfo(a.id, b.id);
-      TRANSIT_CACHE[`${a.id}-${b.id}`] = t;
-      TRANSIT_CACHE[`${b.id}-${a.id}`] = t;
-    }
-  }));
-}
-function getTransit(aId, bId) {
-  if (aId === bId) return { type:'same', icon:'🏋', label:'Same gym', minGap:0 };
-  return TRANSIT_CACHE[`${aId}-${bId}`] ?? transitInfo(aId, bId);
-}
-
-/* ─── LOCATION LIST BUILD ──────────────────────────────── */
-function buildLocList() {
-  const AREA_ORDER = [
-    { area:'Downtown', nbhds:['Downtown & Tribeca','LES & SoHo'] },
-    { area:'West Side', nbhds:['West Village & Chelsea'] },
-    { area:'Midtown',  nbhds:['Flatiron & Nomad','Hudson Yards','Midtown South','Midtown West','Midtown East'] },
-    { area:'Uptown',   nbhds:['Upper West Side','Upper East Side'] },
-    { area:'Brooklyn', nbhds:['Brooklyn'] },
-  ];
-  const grouped = {};
-  CLUBS_DATA.forEach(c => { (grouped[c.neighborhood] = grouped[c.neighborhood]||[]).push(c); });
-  const container = document.getElementById('locList');
-  let html = '';
-  AREA_ORDER.forEach(area => {
-    html += `<div style="font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);padding:10px 0 2px;margin-top:6px;border-top:1px solid var(--border)">${area.area}</div>`;
-    area.nbhds.forEach(nbhd => {
-      const clubs = grouped[nbhd] || [];
-      if (!clubs.length) return;
-      html += `<div class="nbhd-header"><span class="nbhd-label">${nbhd}</span><button class="nbhd-all-btn" onclick="toggleGroup(this)">All</button></div>`;
-      clubs.forEach(c => {
-        html += `<label class="loc-row"><input type="checkbox" id="loc${c.id}" onchange="cbChange(this,${c.id})"><span class="loc-name">${c.name}</span></label>`;
-      });
+// Build location list from CLUBS_DATA
+function buildLocList(){
+  const AREA_ORDER=[{area:'Downtown',nbhds:['Downtown & Tribeca','LES & SoHo']},{area:'West Side',nbhds:['West Village & Chelsea']},{area:'Midtown',nbhds:['Flatiron & Nomad','Hudson Yards','Midtown South','Midtown West','Midtown East']},{area:'Uptown',nbhds:['Upper West Side','Upper East Side']},{area:'Brooklyn',nbhds:['Brooklyn']}];
+  const grouped={};
+  CLUBS_DATA.forEach(c=>{(grouped[c.neighborhood]=grouped[c.neighborhood]||[]).push(c)});
+  const container=document.getElementById('locList');
+  let html='';
+  AREA_ORDER.forEach(area=>{
+    html+=`<div style="font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);padding:10px 0 2px;margin-top:6px;border-top:1px solid var(--border)">${area.area}</div>`;
+    area.nbhds.forEach(nbhd=>{
+      const clubs=grouped[nbhd]||[];
+      if(!clubs.length)return;
+      html+=`<div class="nbhd-header"><span class="nbhd-label">${nbhd}</span><button class="nbhd-all-btn" onclick="toggleGroup(this)">All</button></div>`;
+      clubs.forEach(c=>{html+=`<label class="loc-row"><input type="checkbox" id="loc${c.id}" onchange="cbChange(this,${c.id})"><span class="loc-name">${c.name}</span></label>`});
     });
   });
-  container.innerHTML = html;
+  container.innerHTML=html;
 }
 
-function cbChange(cb, id) {
-  if (cb.checked) selectedClubs.add(id); else selectedClubs.delete(id);
-  document.getElementById('locCount').textContent = selectedClubs.size + ' selected';
-}
-function toggleGroup(btn) {
-  const boxes = [];
-  let el = btn.closest('.nbhd-header').nextElementSibling;
-  while (el && el.classList.contains('loc-row')) { const cb = el.querySelector('input'); if (cb) boxes.push(cb); el = el.nextElementSibling; }
-  const allChecked = boxes.every(cb => cb.checked);
-  boxes.forEach(cb => { cb.checked = !allChecked; const id = parseInt(cb.id.replace('loc','')); if (!allChecked) selectedClubs.add(id); else selectedClubs.delete(id); });
-  btn.classList.toggle('active', !allChecked);
-  document.getElementById('locCount').textContent = selectedClubs.size + ' selected';
-}
-
-/* ─── TOD GRID ─────────────────────────────────────────── */
-function buildTodGrid() {
-  const grid = document.getElementById('todGrid');
-  TOD_PRESETS.forEach(p => {
-    const btn = document.createElement('button');
-    btn.className = 'tod-btn' + (p.any||p.custom?' tod-any':'') + (p.id===activeTod?' active':'');
-    btn.dataset.id = p.id;
-    const rangeLabel = p.any ? 'All day' : p.custom ? 'Choose start & end' : `${fmt(p.start)}–${fmt(p.end)}`;
-    btn.innerHTML = `<span class="tod-icon">${p.icon}</span><span class="tod-label">${p.label}</span><span class="tod-range">${rangeLabel}</span>`;
-    btn.onclick = () => {
-      activeTod = p.id;
-      document.querySelectorAll('.tod-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('customTimeWrap').classList.toggle('visible', !!p.custom);
-    };
-    grid.appendChild(btn);
+// Build category dropdowns from CATEGORIES_DATA
+function buildDropdowns(){
+  ['slot1','slot2'].forEach(id=>{
+    const sel=document.getElementById(id);
+    CATEGORIES_DATA.forEach(([group,opts])=>{
+      const og=document.createElement('optgroup');og.label=group;
+      opts.forEach(o=>{const opt=document.createElement('option');opt.value=o.v;opt.textContent=o.l;og.appendChild(opt)});
+      sel.appendChild(og);
+    });
   });
+  document.getElementById('slot1').value='barre-all';
+  document.getElementById('slot2').value='sculpt-all';
 }
 
-/* ─── TOGGLES ──────────────────────────────────────────── */
-function buildToggles() {
-  document.querySelectorAll('#gapGroup .tog').forEach(b => { b.onclick = () => { document.querySelectorAll('#gapGroup .tog').forEach(x => x.classList.remove('active')); b.classList.add('active'); maxGap = +b.dataset.v; }; });
-  document.querySelectorAll('#orderGroup .tog').forEach(b => { b.onclick = () => { document.querySelectorAll('#orderGroup .tog').forEach(x => x.classList.remove('active')); b.classList.add('active'); order = b.dataset.v; }; });
-  document.querySelectorAll('#transitGroup .tog').forEach(b => { b.onclick = () => { b.classList.toggle('active'); if (b.classList.contains('active')) allowedTransit.add(b.dataset.v); else allowedTransit.delete(b.dataset.v); }; });
-}
+function cbChange(cb,id){if(cb.checked)selectedClubs.add(id);else selectedClubs.delete(id);document.getElementById('locCount').textContent=selectedClubs.size+' selected'}
+function toggleGroup(btn){const boxes=[];let el=btn.closest('.nbhd-header').nextElementSibling;while(el&&el.classList.contains('loc-row')){const cb=el.querySelector('input');if(cb)boxes.push(cb);el=el.nextElementSibling}const allChecked=boxes.every(cb=>cb.checked);boxes.forEach(cb=>{cb.checked=!allChecked;const id=parseInt(cb.id.replace('loc',''));if(!allChecked)selectedClubs.add(id);else selectedClubs.delete(id)});btn.classList.toggle('active',!allChecked);document.getElementById('locCount').textContent=selectedClubs.size+' selected'}
 
-/* ─── MAIN RUN ─────────────────────────────────────────── */
-/*
- * KEY DIFFERENCE FROM ORIGINAL:
- * The original app called Supabase directly from JavaScript.
- * This Python version sends the search params to our Flask server at /api/doubles.
- * Flask then calls Supabase (Python → Supabase), gets the results, and sends them back.
- *
- * The HTTP path: Browser → POST /api/doubles → Flask (Python) → Supabase → Flask → Browser
- */
-async function run() {
-  const btn = document.getElementById('findBtn');
-  btn.disabled = true; btn.textContent = 'Searching…';
-  try {
-    if (!selectedClubs.size) { setResult(emptyHTML('⊘','No locations selected','Select at least one neighbourhood.')); return; }
-    const dateVal = document.getElementById('dateInput').value;
-    if (!dateVal) { setResult(emptyHTML('⊘','Pick a date')); return; }
-    const cat1 = document.getElementById('slot1').value || 'barre-all';
-    const cat2 = document.getElementById('slot2').value || 'sculpt-all';
-    const tod  = TOD_PRESETS.find(p => p.id === activeTod) || TOD_PRESETS[0];
-    let winStart, winEnd;
-    if (tod.custom) { winStart = toMins(document.getElementById('winStart').value||'05:00'); winEnd = toMins(document.getElementById('winEnd').value||'23:00'); }
-    else { winStart = tod.start; winEnd = tod.end; }
+function buildTodGrid(){const grid=document.getElementById('todGrid');TOD_PRESETS.forEach(p=>{const btn=document.createElement('button');btn.className='tod-btn'+(p.any||p.custom?' tod-any':'')+(p.id===activeTod?' active':'');btn.dataset.id=p.id;const rangeLabel=p.any?'All day':p.custom?'Choose start & end':`${fmt(p.start)}–${fmt(p.end)}`;btn.innerHTML=`<span class="tod-icon">${p.icon}</span><span class="tod-label">${p.label}</span><span class="tod-range">${rangeLabel}</span>`;btn.onclick=()=>{activeTod=p.id;document.querySelectorAll('.tod-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('customTimeWrap').classList.toggle('visible',!!p.custom)};grid.appendChild(btn)})}
+function buildToggles(){document.querySelectorAll('#gapGroup .tog').forEach(b=>{b.onclick=()=>{document.querySelectorAll('#gapGroup .tog').forEach(x=>x.classList.remove('active'));b.classList.add('active');maxGap=+b.dataset.v}});document.querySelectorAll('#orderGroup .tog').forEach(b=>{b.onclick=()=>{document.querySelectorAll('#orderGroup .tog').forEach(x=>x.classList.remove('active'));b.classList.add('active');order=b.dataset.v}});document.querySelectorAll('#transitGroup .tog').forEach(b=>{b.onclick=()=>{b.classList.toggle('active');if(b.classList.contains('active'))allowedTransit.add(b.dataset.v);else allowedTransit.delete(b.dataset.v)}})}
+
+async function run(){
+  const btn=document.getElementById('findBtn');
+  btn.disabled=true;btn.textContent='Searching…';
+  try{
+    if(!selectedClubs.size){setResult(emptyHTML('⊘','No locations selected','Select at least one neighbourhood.'));return}
+    const dateVal=document.getElementById('dateInput').value;
+    if(!dateVal){setResult(emptyHTML('⊘','Pick a date'));return}
+    const cat1=document.getElementById('slot1').value||'barre-all';
+    const cat2=document.getElementById('slot2').value||'sculpt-all';
+    const tod=TOD_PRESETS.find(p=>p.id===activeTod)||TOD_PRESETS[0];
+    let winStart,winEnd;
+    if(tod.custom){winStart=toMins(document.getElementById('winStart').value||'05:00');winEnd=toMins(document.getElementById('winEnd').value||'23:00')}
+    else{winStart=tod.start;winEnd=tod.end}
     closeDrawer();
-    setResult(`<div class="centered"><div class="centered-label">Querying via Python…</div></div>`);
-    const day = dayOfWeek(dateVal);
-
-    /* fetch() sends an HTTP POST request to our Flask server */
-    const resp = await fetch('/api/doubles', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ club_ids:[...selectedClubs], day, cat1, cat2, max_gap:maxGap, pair_order:order, win_start:winStart, win_end:winEnd })
-    });
-    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error || resp.statusText); }
-    const pairs = await resp.json();
-
-    if (!pairs.length) { setResult(emptyHTML('◎','No doubles found','Try widening filters or selecting more locations.')); return; }
-
-    const annotated = pairs.map(p => { const transit = getTransit(p.first_club_id, p.second_club_id); const tight = transit && p.gap_minutes < (transit.minGap??0); return {...p, transit, tight}; })
-      .filter(p => { if (!p.transit) return false; if (allowedTransit.size>0 && !allowedTransit.has(p.transit.type)) return false; return true; });
-
-    renderResults(annotated, dateVal);
-  } catch(err) {
-    setResult(emptyHTML('⚠','Something went wrong', err.message||String(err)));
-  } finally {
-    btn.disabled = false; btn.textContent = 'Find Doubles →';
-  }
+    setResult('<div class="centered"><div class="centered-label">Querying via Python…</div></div>');
+    const resp=await fetch('/api/doubles',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({club_ids:[...selectedClubs],day:dayOfWeek(dateVal),cat1,cat2,max_gap:maxGap,pair_order:order,win_start:winStart,win_end:winEnd})});
+    if(!resp.ok){const e=await resp.json();throw new Error(e.error||resp.statusText)}
+    const data=await resp.json();
+    const pairs=data.results||data;
+    if(!pairs.length){setResult(emptyHTML('◎','No doubles found','Try widening filters or selecting more locations.'));return}
+    const annotated=pairs.map(p=>{const transit=getTransit(p.first_club_id,p.second_club_id);const tight=transit&&p.gap_minutes<(transit.minGap??0);return{...p,transit,tight}}).filter(p=>{if(!p.transit)return false;if(allowedTransit.size>0&&!allowedTransit.has(p.transit.type))return false;return true});
+    renderResults(annotated,dateVal);
+  }catch(err){setResult(emptyHTML('⚠','Something went wrong',err.message||String(err)))}
+  finally{btn.disabled=false;btn.textContent='Find Doubles →'}
 }
 
-/* ─── RENDER ───────────────────────────────────────────── */
-const LINE_COLORS = {A:'#0039A6',C:'#0039A6',E:'#0039A6',B:'#FF6319',D:'#FF6319',F:'#FF6319',M:'#FF6319',1:'#EE352E',2:'#EE352E',3:'#EE352E',4:'#00933C',5:'#00933C',6:'#00933C',7:'#B933AD',N:'#FCCC0A',Q:'#FCCC0A',R:'#FCCC0A',W:'#FCCC0A',J:'#996633',Z:'#996633',L:'#A7A9AC',G:'#6CBE45',S:'#808183'};
-function lineBadge(l) { const bg=LINE_COLORS[l]||'#555',fg=['N','Q','R','W'].includes(l)?'#000':'#fff'; return `<span class="line-badge" style="background:${bg};color:${fg}">${l}</span>`; }
+const LINE_COLORS={A:'#0039A6',C:'#0039A6',E:'#0039A6',B:'#FF6319',D:'#FF6319',F:'#FF6319',M:'#FF6319',1:'#EE352E',2:'#EE352E',3:'#EE352E',4:'#00933C',5:'#00933C',6:'#00933C',7:'#B933AD',N:'#FCCC0A',Q:'#FCCC0A',R:'#FCCC0A',W:'#FCCC0A',J:'#996633',Z:'#996633',L:'#A7A9AC',G:'#6CBE45',S:'#808183'};
+function lineBadge(l){const bg=LINE_COLORS[l]||'#555',fg=['N','Q','R','W'].includes(l)?'#000':'#fff';return `<span class="line-badge" style="background:${bg};color:${fg}">${l}</span>`}
 
-function renderResults(pairs, dateStr) {
-  const dateLabel = new Date(dateStr+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
-  const typeRank = {same:0,walk:1,'quick-train':2,extended:3};
-  const sorted = [...pairs].sort((a,b) => (typeRank[a.transit?.type]??3)-(typeRank[b.transit?.type]??3)||(a.tight?1:0)-(b.tight?1:0)||a.gap_minutes-b.gap_minutes||a.first_start-b.first_start);
-  const tierColor = {same:'#4af0a0',walk:'var(--lime)','quick-train':'#f0c94a',extended:'#f0844a'};
-  let html = `<div class="results-top"><div class="results-label">${dateLabel}</div><div class="results-count">${sorted.length} pair${sorted.length!==1?'s':''}</div></div><div class="pairs">`;
-  let lastTier = null;
-  sorted.forEach(p => {
-    const t = p.transit, tier = t.type;
-    if (lastTier && lastTier!==tier) { const d={walk:'── on foot ────────────────────────────','quick-train':'── quick train ────────────────────────',extended:'── extended commute ───────────────────'}; if(d[tier]) html+=`<div class="tier-divider">${d[tier]}</div>`; }
-    lastTier = tier;
-    const sc = p.first_club_id===p.second_club_id;
-    const loc = sc ? p.first_club_name : `${p.first_club_name} → ${p.second_club_name}`;
-    const waitStr = p.gap_minutes===0 ? 'Back-to-back' : `+${p.gap_minutes} min wait`;
-    const color = tierColor[tier]||'var(--lime)';
-    const tight = p.tight ? `<span style="font-size:8px;font-weight:700;color:#f0844a;border:1px solid rgba(240,132,74,.35);padding:2px 6px;margin-left:4px">⚡ TIGHT</span>` : '';
-    let transitRow = '';
-    if (t.type==='same') transitRow = `<span style="font-size:10px;font-weight:700;color:var(--lime)">🏋 Same gym</span>`;
-    else if (t.type==='walk') transitRow = `<span style="font-size:10px;color:var(--lime)">🚶 ${t.label}</span>`;
-    else { const aL=CLUB_LINES[p.first_club_id]||[],bL=CLUB_LINES[p.second_club_id]||[]; const shared=aL.filter(l=>bL.includes(l)); transitRow=`<span style="font-size:10px;color:var(--dim)">${t.icon} ${t.label}</span>${shared.slice(0,3).map(lineBadge).join('')}`; }
-    html += `<div class="pair-card"><div class="pair-meta"><div class="pair-meta-top"><span class="pair-loc">${loc}</span><div style="display:flex;align-items:center"><span class="pair-gap" style="color:${color}">${waitStr}</span>${tight}</div></div><div style="margin-top:5px;display:flex;align-items:center;gap:6px">${transitRow}</div></div><div class="pair-body">${classCell(p.first_class_name,p.first_start,p.first_end,p.first_instructor,p.first_club_name,'① First',sc)}<div class="pair-div"></div>${classCell(p.second_class_name,p.second_start,p.second_end,p.second_instructor,p.second_club_name,'② Second',sc)}</div></div>`;
+function renderResults(pairs,dateStr){
+  const dateLabel=new Date(dateStr+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
+  const typeRank={same:0,walk:1,'quick-train':2,extended:3};
+  const sorted=[...pairs].sort((a,b)=>(typeRank[a.transit?.type]??3)-(typeRank[b.transit?.type]??3)||(a.tight?1:0)-(b.tight?1:0)||a.gap_minutes-b.gap_minutes||a.first_start-b.first_start);
+  const tierColor={same:'#4af0a0',walk:'var(--lime)','quick-train':'#f0c94a',extended:'#f0844a'};
+  let html=`<div class="results-top"><div class="results-label">${dateLabel}</div><div class="results-count">${sorted.length} pair${sorted.length!==1?'s':''}</div></div><div class="pairs">`;
+  let lastTier=null;
+  sorted.forEach(p=>{
+    const t=p.transit,tier=t.type;
+    if(lastTier&&lastTier!==tier){const d={walk:'── on foot ────────────────────────────','quick-train':'── quick train ────────────────────────',extended:'── extended commute ───────────────────'};if(d[tier])html+=`<div class="tier-divider">${d[tier]}</div>`}
+    lastTier=tier;
+    const sc=p.first_club_id===p.second_club_id;
+    const loc=sc?p.first_club_name:`${p.first_club_name} → ${p.second_club_name}`;
+    const waitStr=p.gap_minutes===0?'Back-to-back':`+${p.gap_minutes} min wait`;
+    const color=tierColor[tier]||'var(--lime)';
+    const tight=p.tight?`<span style="font-size:8px;font-weight:700;color:#f0844a;border:1px solid rgba(240,132,74,.35);padding:2px 6px;margin-left:4px">⚡ TIGHT</span>`:'';
+    let tr='';
+    if(t.type==='same')tr=`<span style="font-size:10px;font-weight:700;color:var(--lime)">🏋 Same gym</span>`;
+    else if(t.type==='walk')tr=`<span style="font-size:10px;color:var(--lime)">🚶 ${t.label}</span>`;
+    else{const aL=CLUB_LINES[p.first_club_id]||[],bL=CLUB_LINES[p.second_club_id]||[];const shared=aL.filter(l=>bL.includes(l));tr=`<span style="font-size:10px;color:var(--dim)">${t.icon} ${t.label}</span>${shared.slice(0,3).map(lineBadge).join('')}`}
+    html+=`<div class="pair-card"><div class="pair-meta"><div class="pair-meta-top"><span class="pair-loc">${loc}</span><div style="display:flex;align-items:center"><span class="pair-gap" style="color:${color}">${waitStr}</span>${tight}</div></div><div style="display:flex;align-items:center;gap:6px">${tr}</div></div><div class="pair-body">${classCell(p.first_class_name,p.first_start,p.first_end,p.first_instructor,p.first_club_name,'① First',sc)}<div class="pair-div"></div>${classCell(p.second_class_name,p.second_start,p.second_end,p.second_instructor,p.second_club_name,'② Second',sc)}</div></div>`;
   });
-  html += '</div>';
+  html+='</div>';
   setResult(html);
 }
-function classCell(name,start,end,instructor,clubName,label,hideClub) {
-  return `<div class="class-cell"><div class="cc-slot">${label}</div><div class="cc-name">${name}</div><div class="cc-time">${fmt(start)} – ${fmt(end)}</div>${instructor?`<div class="cc-info">${instructor}</div>`:''} ${!hideClub?`<div class="cc-club">${clubName}</div>`:''}</div>`;
-}
-function emptyHTML(icon,label,sub='') { return `<div class="centered"><div class="centered-icon">${icon}</div><div class="centered-label">${label}</div>${sub?`<div class="centered-sub">${sub}</div>`:''}</div>`; }
-function setResult(html) { document.getElementById('resultsPanel').innerHTML = html; }
+function classCell(name,start,end,instructor,clubName,label,hideClub){return `<div class="class-cell"><div class="cc-slot">${label}</div><div class="cc-name">${name}</div><div class="cc-time">${fmt(start)} – ${fmt(end)}</div>${instructor?`<div class="cc-info">${instructor}`:''}${!hideClub?`<div class="cc-club">${clubName}</div>`:''}</div>`}
+function emptyHTML(icon,label,sub=''){return `<div class="centered"><div class="centered-icon">${icon}</div><div class="centered-label">${label}</div>${sub?`<div class="centered-sub">${sub}</div>`:''}</div>`}
+function setResult(html){document.getElementById('resultsPanel').innerHTML=html}
 
-/* ─── INIT ─────────────────────────────────────────────── */
-function init() {
-  buildLocList();
-  buildTodGrid();
-  buildToggles();
-  buildTransitCache();
-  document.getElementById('dateInput').value = todayStr();
-}
-window.addEventListener('DOMContentLoaded', init);
+function init(){buildLocList();buildDropdowns();buildTodGrid();buildToggles();buildTransitCache();document.getElementById('dateInput').value=todayStr()}
+window.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
 </html>
